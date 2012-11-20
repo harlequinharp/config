@@ -19,6 +19,7 @@ alias sudo='sudo '
 source /home/allie/.zkbd/xfce-terminal-:0.0
 bindkey "${key[Delete]}" delete-char
 bindkey "${key[Insert]}" overwrite-mode
+bindkey -v
 
 export PERL_LOCAL_LIB_ROOT="/home/allie/perl5";
 export PERL_MB_OPT="--install_base /home/allie/perl5";
