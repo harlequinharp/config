@@ -8,3 +8,4 @@ alias sudo='sudo '
 PATH=/home/allie/scripts:$PATH
 BOOSTDIR=~/boost
 LD_LIBRARY_PATH=$BOOSTDIR/lib
+SSH_ASKPASS=
