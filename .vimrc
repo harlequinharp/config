@@ -32,6 +32,7 @@ set noswapfile
 set smarttab
 set shiftwidth=4
 set tabstop=4
+set expandtab
 
 set ai " auto indent
 set si " smart indent
@@ -70,27 +71,20 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ Col:\ %c%=%P
 
-" move a line of text using alt+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-	nmap <D-j> <M-j>
-	nmap <D-k> <M-k>
-	vmap <D-j> <M-j>
-	vmap <D-k> <M-k>
-endif
+" move a line of text using \ followed by [jk]
+nmap <Leader>j mz:m+<cr>`z
+nmap <Leader>k mz:m-2<cr>`z
+vmap <Leader>j :m'>+<cr>`<my`>mzgv`yo`z
+vmap <Leader>k :m'<-2<cr>`>my`<mzgv`yo`z
 
 " attempting to map for system-paste
 noremap <Leader>a "+p
 
-" shift+space to enter and exit insert mode
-imap <S-Space> <Esc>
-nmap <S-Space> i
+" ctrl+space to enter and exit insert mode
+imap <C-Space> <Esc>
+nmap <C-Space> i
 
 
 """""FUNCTIONS""""

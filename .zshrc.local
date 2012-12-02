@@ -1,0 +1,10 @@
+# my zsh customizations
+
+# aliases
+alias pacman='pacman-color '
+alias sudo='sudo '
+
+# env variables
+PATH=/home/allie/scripts:$PATH
+BOOSTDIR=~/boost
+LD_LIBRARY_PATH=$BOOSTDIR/lib
