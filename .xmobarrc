@@ -1,18 +1,19 @@
 -- vim: set syntax=haskell:
 Config { 
-    font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
+    font = "xft:Bitstream Vera Sans Mono:size=8:bold:antialias=true"
     , bgColor = "black"
     , fgColor = "grey"
     , position = TopW L 95
-    , commands = [ Run Weather "KBOS" ["-t"," <tempC>C | Wind: <wind> | Skies: <skyCondition>","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+    , commands = [ Run Weather "KBOS" ["-t","Outside Temp: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
                 , Run MultiCpu ["-t","Cpu: <total0> <total1> <total2> <total3> <total4> <total5> <total6> <total7>","-L","30","-H","60","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC","-w","3"] 10
+                , Run CoreTemp ["-t","Temp:<core0>C","-L","30","-H","60","-l","lightblue","-n","gray90","-h","red"] 50
                 , Run Memory ["-t","Mem: <usedratio>%"] 10
-                , Run Network "eth0" ["-t","Net: <rx>, <tx>","-H","200","-L","10","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10
+                , Run Network "eth0" ["-w","4","-t","Net: <rx>Kb/s down, <tx>Kb/s up","-H","200","-L","10","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10
                 , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                 , Run Com "uname" ["-s","-r"] "" 36000
                 , Run StdinReader
     ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "<fc=#B22222>%uname%</fc>  %StdinReader% }{ %multicpu% %memory% %eth0% <fc=#ee9a00>%date%</fc> %KBOS%"
+    , template = "<fc=#B22222>%uname%</fc>  %StdinReader% }{ %coretemp% | %multicpu% | %memory% | %eth0% | <fc=#ee9a00>%date%</fc> | %KBOS%"
 }
