@@ -1,2 +1,2 @@
 #!/bin/bash
-dbus-launch thunar &
+dbus-launch thunar $1 &

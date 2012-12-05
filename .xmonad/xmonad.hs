@@ -12,6 +12,7 @@ modm = mod4Mask -- so we can change it in one location
 
 myManageHook = composeAll
     [ className =? "Pidgin" --> doShift "2" -- All pidgin windows will spawn on workspace 2
+    , className =? "Thunderbird" --> doShift "3" -- thunderbird windows spawn on ws 2
     ]
 
 numPadKeys = [ xK_KP_End,   xK_KP_Down,     xK_KP_Page_Down -- 1, 2, 3

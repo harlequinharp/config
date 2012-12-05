@@ -14,7 +14,7 @@ feh --bg-fill /home/allie/Dropbox/backgrounds/crow.jpg
 cairo-compmgr &
 
 # Fire up apps
-thunar --daemon &
+dbus-launch thunar --daemon &
 pidgin &
 dropboxd &
 xscreensaver -no-splash &
