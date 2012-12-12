@@ -9,9 +9,6 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut true \
  
 # Set the background 
 feh --bg-fill /home/allie/Dropbox/backgrounds/crow.jpg
- 
-# enable compositing
-cairo-compmgr &
 
 # Fire up apps
 dbus-launch thunar --daemon &
@@ -20,4 +17,4 @@ dropboxd &
 xscreensaver -no-splash &
  
 # start xmonad
-exec xmonad
+exec dbus-launch xmonad

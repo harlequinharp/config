@@ -5,7 +5,15 @@ alias pacman='pacman-color '
 alias sudo='sudo '
 
 # env variables
-PATH=/home/allie/scripts:$PATH
-BOOSTDIR=~/boost
-LD_LIBRARY_PATH=$BOOSTDIR/lib
-SSH_ASKPASS=
+export BOOSTDIR=~/boost
+export LD_LIBRARY_PATH=$BOOSTDIR/lib
+export SSH_ASKPASS=
+export VISUAL=vim
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/bin/virtualenvwrapper.sh
+if [ -n "$DISPLAY" ]; then
+    BROWSER=firefox
+else
+    BROWSER=links
+fi
