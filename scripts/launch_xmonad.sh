@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+# startx 
 # Load resources
 xrdb -merge .Xresources
  
@@ -15,6 +15,7 @@ dbus-launch thunar --daemon &
 pidgin &
 dropboxd &
 xscreensaver -no-splash &
+xsetroot -cursor_name left_ptr
  
 # start xmonad
 exec dbus-launch xmonad
