@@ -1,6 +1,6 @@
 -- vim: set syntax=haskell:
 Config { 
-    font = "xft:Bitstream Vera Sans Mono:size=8:bold:antialias=true"
+    font = "xft:DejaVu Sans Mono:pixelsize=12:bold:antialias=true:hinting=true"
     , bgColor = "black"
     , fgColor = "grey"
     , position = TopW L 95
