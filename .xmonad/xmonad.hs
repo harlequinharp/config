@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
@@ -33,14 +34,14 @@ myKeys = [((modm .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") -- mo
 
 main = do 
     xmproc <- spawnPipe "xmobar"
-    xmonad $ defaultConfig 
+    xmonad $ defaultConfig
         { manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
-        , terminal = "lxterminal"
+        , terminal = "urxvt"
         , modMask = modm -- rebind mod to whatever modm is
         } `additionalKeys` myKeys
     

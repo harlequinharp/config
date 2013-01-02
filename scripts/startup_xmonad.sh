@@ -1,5 +1,4 @@
 #!/bin/bash
-# startx 
 # Load resources
 xrdb -merge .Xresources
  
@@ -11,7 +10,7 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut true \
 feh --bg-fill /home/allie/Dropbox/backgrounds/crow.jpg
 
 # Fire up apps
-# dbus-launch thunar --daemon &
+dbus-launch thunar --daemon &
 pidgin &
 dropboxd &
 xsetroot -cursor_name left_ptr

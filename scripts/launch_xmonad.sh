@@ -1,5 +1,5 @@
 #!/bin/bash
 
-startup_xmonad.sh
+~/config/scripts/startup_xmonad.sh
 # start xmonad
 exec dbus-launch xmonad

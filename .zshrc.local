@@ -3,6 +3,7 @@
 # aliases
 alias pacman='pacman-color '
 alias sudo='sudo '
+alias vim='/home/allie/vim/bin/vim '
 
 # env variables
 export BOOSTDIR=~/boost
