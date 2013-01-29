@@ -74,6 +74,8 @@ Bundle 'Wombat'
 Bundle 'SearchComplete'
 " Yank history navigation
 Bundle 'YankRing.vim'
+" C and C++ added functionality
+Bundle 'c.vim'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
@@ -225,6 +227,11 @@ let g:ctrlp_custom_ignore = {
 " Ignore files on NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
+" tidy integration
+:command Thtml  :%!tidy -q -i --show-errors 0
+:command Txml   :%!tidy -q -i --show-errors 0
+:vmap ,x :%!tidy -q -i --show-errors 0<CR>
+
 " simple recursive grep
 command! -nargs=1 RecurGrep lvimgrep /<args>/gj ./**/*.* | lopen | set nowrap
 command! -nargs=1 RecurGrepFast silent exec 'lgrep! <q-args> ./**/*.*' | lopen
@@ -232,7 +239,7 @@ nmap ,R :RecurGrep
 nmap ,r :RecurGrepFast 
 nmap ,wR :RecurGrep <cword><CR>
 nmap ,wr :RecurGrepFast <cword><CR>
-
+ 
 " python-mode settings
 " don't show lint result every time we save a file
 let g:pymode_lint_write = 0
