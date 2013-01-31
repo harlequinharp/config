@@ -13,6 +13,9 @@ export VISUAL=vim
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/bin/virtualenvwrapper.sh
+
+export PATH=/home/allie/sat:$PATH
+
 if [ -n "$DISPLAY" ]; then
     BROWSER=firefox
 else
