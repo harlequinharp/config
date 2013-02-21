@@ -14,4 +14,5 @@ dbus-launch thunar --daemon &
 pidgin &
 dropboxd &
 xsetroot -cursor_name left_ptr
+setxkbmap -layout "us, dvorak" -option "grp:caps_toggle"
  
