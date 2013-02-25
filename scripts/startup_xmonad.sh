@@ -13,5 +13,6 @@ feh --bg-fill /home/allie/Dropbox/backgrounds/crow.jpg
 dbus-launch thunar --daemon &
 pidgin &
 dropboxd &
+synergyc allie-arch
 xsetroot -cursor_name left_ptr
  
