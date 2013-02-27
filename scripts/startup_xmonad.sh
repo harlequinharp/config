@@ -11,7 +11,9 @@ feh --bg-fill /home/allie/Dropbox/backgrounds/crow.jpg
 
 # Fire up apps
 dbus-launch thunar --daemon &
+wicd-gtk &
 pidgin &
+skype &
 dropboxd &
 synergyc allie-arch
 xsetroot -cursor_name left_ptr
