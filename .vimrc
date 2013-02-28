@@ -298,6 +298,7 @@ let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
 
 
 syntax on
+set foldmethod=syntax
 
 set autoread
 " not sure about this one 

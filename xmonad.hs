@@ -12,7 +12,9 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 modm = mod4Mask -- so we can change it in one location
 
 myManageHook = composeAll
-    [ className =? "Pidgin" --> doShift "2" -- All pidgin windows will spawn on workspace 2
+    [ 
+      className =? "Pidgin" --> doShift "2" -- All pidgin windows will spawn on workspace 2
+    , className =? "Skype" --> doShift "2" -- All skype windows will spawn on workspace 2
     , className =? "Thunderbird" --> doShift "3" -- thunderbird windows spawn on ws 2
     ]
 
