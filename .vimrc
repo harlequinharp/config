@@ -54,9 +54,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'Townk/vim-autoclose'
 " Indent text object
 Bundle 'michaeljsmith/vim-indent-object'
-" Python mode (indentation, doc, refactor, lints, code checking, motion and
-" operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
 
 " Bundles from vim-scripts repos
 "
@@ -254,10 +251,6 @@ let g:pymode_lint_signs = 0
 let g:pymode_folding = 0
 " don't create rope project if doesn't exists
 let g:pymode_rope_auto_project = 0
-
-" rope (from python-mode) settings
-nmap ,d :RopeGotoDefinition<CR>
-nmap ,o :RopeFindOccurrences<CR>
 
 " don't let pyflakes allways override the quickfix list
 let g:pyflakes_use_quickfix = 0

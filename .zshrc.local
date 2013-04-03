@@ -14,7 +14,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
-export PATH=/home/allie/lm4tools/lm4flash:/home/allie/sat/bin:$PATH
+export PATH=~/lm4tools/lm4flash:~/sat/bin:$PATH
 
 if [ -n "$DISPLAY" ]; then
     BROWSER=firefox
