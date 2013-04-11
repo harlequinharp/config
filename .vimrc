@@ -56,7 +56,6 @@ Bundle 'Townk/vim-autoclose'
 Bundle 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
 
 " Bundles from vim-scripts repos
 "
@@ -266,15 +265,7 @@ let g:pyflakes_use_quickfix = 0
 let g:tabman_toggle = 'tl'
 let g:tabman_focus  = 'tf'
 
-" use 256 colors when possible
-if &term =~? 'mlterm\|xterm\|screen-256'
-	let &t_Co = 256
-    " color
-    colorscheme fisa
-else
-    " color
-    colorscheme delek
-endif
+colorscheme fisa
 
 " colors for gvim
 if has('gui_running')
