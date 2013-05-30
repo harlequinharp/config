@@ -1,22 +1,6 @@
 # my zsh customizations
 
-# aliases
-alias sudo='sudo '
-
-# env variables
-export BOOSTDIR=~/boost
-export CAPDIR=~/projects/ba-capstone
-export LD_LIBRARY_PATH=$BOOSTDIR/lib
-export SSH_ASKPASS=
 export VISUAL=vim
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/projects
+export PROJECT_HOME=$HOME/project
 source /usr/bin/virtualenvwrapper.sh
-
-export PATH=/home/allie/lm4tools/lm4flash:/home/allie/sat/bin:$PATH
-
-if [ -n "$DISPLAY" ]; then
-    BROWSER=firefox
-else
-    BROWSER=links
-fi
