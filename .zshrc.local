@@ -3,4 +3,5 @@
 export VISUAL=vim
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/project
+export SCONSFLAGS="-j 5"
 source /usr/bin/virtualenvwrapper.sh
