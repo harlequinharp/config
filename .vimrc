@@ -180,11 +180,8 @@ set viminfo^=%
 " Always show the status line
 set laststatus=2
 
-" move a line of text using \ followed by [jk]
-nmap <Leader>j mz:m+<cr>`z
-nmap <Leader>k mz:m-2<cr>`z
-vmap <Leader>j :m'>+<cr>`<my`>mzgv`yo`z
-vmap <Leader>k :m'<-2<cr>`>my`<mzgv`yo`z
+"
+nmap <Leader>t :tabnew
 
 " hexmode shortcuts
 nnoremap <Leader>h :Hexmode<CR>
@@ -192,7 +189,38 @@ inoremap <Leader>h <Esc>:Hexmode<CR>
 vnoremap <Leader>h :<C-U>Hexmode<CR>
 
 colorscheme fisa
+nnoremap <silent> <A-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-L> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
+if exists("+showtabline")
+     function MyTabLine()
+         let s = ''
+         let t = tabpagenr()
+         let i = 1
+         while i <= tabpagenr('$')
+             let buflist = tabpagebuflist(i)
+             let winnr = tabpagewinnr(i)
+             let s .= '%' . i . 'T'
+             let s .= (i == t ? '%1*' : '%2*')
+             let s .= ' '
+             let s .= i . ')'
+             let s .= ' %*'
+             let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+             let file = bufname(buflist[winnr - 1])
+             let file = fnamemodify(file, ':p:t')
+             if file == ''
+                 let file = '[No Name]'
+             endif
+             let s .= file
+             let i = i + 1
+         endwhile
+         let s .= '%T%#TabLineFill#%='
+         let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+         return s
+     endfunction
+     set stal=2
+     set tabline=%!MyTabLine()
+endif
 """""FUNCTIONS""""
 
 " function to auto-insert include guards in C/C++ headers
@@ -274,3 +302,4 @@ function ToggleHex()
   let &readonly=l:oldreadonly
   let &modifiable=l:oldmodifiable
 endfunction
+
