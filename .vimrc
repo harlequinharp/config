@@ -9,15 +9,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles from GitHub repos:
-
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Code commenter
 Bundle 'scrooloose/nerdcommenter'
 " Class/module browser
 Bundle 'majutsushi/tagbar'
-" Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
 " Zen coding
 Bundle 'mattn/zencoding-vim'
 " Git integration
@@ -34,23 +31,15 @@ Bundle 'rosenfeld/conque-term'
 Bundle 'fisadev/FixedTaskList.vim'
 " Surround
 Bundle 'tpope/vim-surround'
-" Autoclose
-Bundle 'Townk/vim-autoclose'
 " Indent text object
 Bundle 'michaeljsmith/vim-indent-object'
 
 " Bundles from vim-scripts repos
 "
-" Autocompletion
-Bundle 'AutoComplPop'
 " Search results counter
 Bundle 'IndexedSearch'
 " XML/HTML tags navigation
 Bundle 'matchit.zip'
-" Autocompletion inside search
-Bundle 'SearchComplete'
-" Yank history navigation
-Bundle 'YankRing.vim'
 
 " allow plugins by file type
 filetype plugin on
@@ -86,9 +75,6 @@ let g:tagbar_autofocus = 1
 
 " NERDTree (better file browser) toggle
 map <F3> :NERDTreeToggle<CR>
-
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " show pending tasks list
 map <F2> :TaskList<CR>
