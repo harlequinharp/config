@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Set up an icon tray
+trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+ --expand true --width 5 --transparent true --alpha 0 --tint 0x333333 --height 17 &
+ 
+# Set the background 
+feh --bg-fill ~/Dropbox/backgrounds/crow.jpg
+
+#unclutter hides the cursor when it's not being used
+unclutter &
+
+#caps lock switches between qwerty and dvorak
+setxkbmap -layout "us, dvorak" -option "grp:caps_toggle"
+
+# start xmonad
+exec dbus-launch xmonad
