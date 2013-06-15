@@ -24,6 +24,8 @@ myKeys = [
          ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s") -- ctrl+printscrn = screenshot area
         , ((0, xK_Print), spawn "scrot") -- printscrn = screenshot
         , ((modm .|. shiftMask, xK_r), spawn "/home/allie/config/scripts/trackpad_toggle.sh")
+        , ((modm .|. shiftMask, xK_w), spawn "iceweasel")
+        , ((modm .|. shiftMask, xK_f), spawn "thunar")
         ]
         ++
         [((m .|. modm, k), windows $ f i) -- this block sets up numpad workspace switching but idgi
