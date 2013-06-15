@@ -1,6 +1,5 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Xmonad
 Comment=XMonad by itself
-Exec=xmonad
-Type=XSession
+Type=Application
+Exec=/usr/local/bin/xmonad.start

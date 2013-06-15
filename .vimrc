@@ -3,6 +3,8 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+
+" vundle itself
 Bundle 'gmarik/vundle'
 " Better file browser
 Bundle 'scrooloose/nerdtree'
