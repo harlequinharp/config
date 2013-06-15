@@ -1,0 +1,22 @@
+# my zsh customizations
+
+# aliases
+alias pacman='pacman-color '
+alias sudo='sudo '
+
+# env variables
+export BOOSTDIR=~/boost
+export CAPDIR=~/ba-capstone
+export SSH_ASKPASS=
+export VISUAL=vim
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/bin/virtualenvwrapper.sh
+
+export PATH=/home/allie/lm4tools/lm4flash:/home/allie/sat/bin:$PATH
+
+if [ -n "$DISPLAY" ]; then
+    BROWSER=firefox
+else
+    BROWSER=links
+fi

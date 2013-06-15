@@ -11,4 +11,5 @@ dbus-launch thunar --daemon &
 dropboxd &
 unclutter&
 setxkbmap -layout "us, dvorak" -option "grp:caps_toggle"
+synergyc allie-arch
  
