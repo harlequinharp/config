@@ -6,16 +6,15 @@ Config {
     ,position = TopW L 96
     ,overrideRedirect = False
     ,commands = [
-        Run MultiCpu ["-t","<total0> <total1> <total2> <total3>","-L","30","-H","60","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC","-w","3"] 10
+        Run MultiCpu ["-t","<total0> <total1> <total2> <total3> <total4> <total5> <total6> <total7>","-L","30","-H","60","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC","-w","3"] 10
         ,Run CoreTemp ["-S", "True","-t","<core0>C","-L","35","-H","60","-l","lightblue","-n","gray90","-h","red"] 50
         ,Run Memory ["-t","<usedratio>%"] 10
         ,Run DynNetwork  ["-S", "True","-w","4","-t","<rx>s down, <tx>s up","-H","200","-L","10","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10
         ,Run Date "%F, %A, %T" "date" 10
         ,Run Com "uname" ["-s","-r"] "" 36000
         ,Run StdinReader
-        ,Run Wireless "wlp2s0" ["-S","True","-t","<quality>"] 10
     ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> { Signal %wlp2s0wi%, %dynnetwork% | mem: %memory% | %multicpu% | %coretemp%"
+    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> { %dynnetwork% | mem: %memory% | %multicpu% | %coretemp%"
 }
