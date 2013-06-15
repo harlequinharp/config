@@ -1,0 +1,12 @@
+# my zsh customizations
+
+# aliases
+alias sudo='sudo '
+
+# env variables
+export SSH_ASKPASS=
+export VISUAL=vim
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+source /usr/bin/virtualenvwrapper.sh
+
