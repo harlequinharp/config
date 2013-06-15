@@ -1,46 +1,51 @@
 " required for vundle
 filetype off
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
 Bundle 'gmarik/vundle'
-
-" Bundles from GitHub repos:
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Code commenter
 Bundle 'scrooloose/nerdcommenter'
 " Class/module browser
 Bundle 'majutsushi/tagbar'
-" Zen coding
-Bundle 'mattn/zencoding-vim'
 " Git integration
 Bundle 'motemen/git-vim'
-" Tab list panel
-Bundle 'kien/tabman.vim'
-" Powerline
-Bundle 'Lokaltog/vim-powerline'
-" Terminal Vim with 256 colors colorscheme
-Bundle 'fisadev/fisa-vim-colorscheme'
-" Consoles as buffers
-Bundle 'rosenfeld/conque-term'
 " Pending tasks list
 Bundle 'fisadev/FixedTaskList.vim'
 " Surround
 Bundle 'tpope/vim-surround'
 " Indent text object
 Bundle 'michaeljsmith/vim-indent-object'
-
-" Bundles from vim-scripts repos
-"
+" web api access (needed for Gist.vim)
+Bundle 'mattn/webapi-vim'
 " Search results counter
 Bundle 'IndexedSearch'
 " XML/HTML tags navigation
 Bundle 'matchit.zip'
+" interact with github gists from vim
+Bundle 'Gist.vim'
+let g:github_user = "abresee"
+let g:github_token = "88e7613893c665d61284df51f50478c7cb57941e"
 
+" code completion
+Bundle 'Shougo/neocomplete'
+" snippets
+Bundle 'Shougo/neosnippet'
+" solarized for vim
+Bundle 'altercation/vim-colors-solarized'
+" Powerline
+Bundle 'Lokaltog/vim-powerline'
+" solarized for powerline
+Bundle 'stephenmckinney/vim-solarized-powerline'
+set t_Co=16
+let g:solarized_termcolors=16
+let g:Powerline_theme='short'
+let g:Powerline_colorscheme='solarized16_dark'
+
+
+"
 " allow plugins by file type
 filetype plugin on
 filetype indent on
@@ -51,74 +56,32 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" tablength exceptions
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-
 " always show status bar
 set ls=2
 
 " incremental search
 set incsearch
 
-" highlighted search results
-set hlsearch
-
 " line numbers
 set nu
 
-" toggle Tagbar display
-map <F4> :TagbarToggle<CR>
-" autofocus on Tagbar open
-let g:tagbar_autofocus = 1
-
-" NERDTree (better file browser) toggle
-map <F3> :NERDTreeToggle<CR>
-
 " show pending tasks list
 map <F2> :TaskList<CR>
+" NERDTree (better file browser) toggle
+map <F3> :NERDTreeToggle<CR>
+" toggle Tagbar display
+map <F4> :TagbarToggle<CR>
 
-" CtrlP (new fuzzy finder)
-let g:ctrlp_map = ',e'
-nmap ,g :CtrlPBufTag<CR>
-nmap ,G :CtrlPBufTagAll<CR>
-nmap ,f :CtrlPLine<CR>
-nmap ,m :CtrlPMRUFiles<CR>
-" to be able to call CtrlP with default search text
-function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    execute ':CtrlP' . a:ctrlp_command_end
-    call feedkeys(a:search_text)
-endfunction
-" CtrlP with default text
-nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
-" Don't change working directory
-let g:ctrlp_working_path_mode = 0
-" Ignore files on fuzzy finder
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
-  \ 'file': '\.pyc$\|\.pyo$',
-  \ }
+
+
 
 " Ignore files on NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.os$', '\.so$', '\.o$']
 
-" tidy integration
-:command Thtml  :%!tidy -q -i --show-errors 0
-:command Txml   :%!tidy -q -i --show-errors 0
-:vmap ,x :%!tidy -q -i --show-errors 0<CR>
-
- 
 
 " tabman shortcuts
 let g:tabman_toggle = 'tl'
 let g:tabman_focus  = 'tf'
-
 
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
@@ -127,23 +90,18 @@ set scrolloff=3
 " (complete only the common part, list the options that match)
 set wildmode=list:longest
 
-" Fix to let ESC work as espected with Autoclose plugin
-let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
-
 " to use fancy symbols for powerline, uncomment the following line and use a
 " patched font (more info on the README.rst)
 let g:Powerline_symbols = 'fancy'
 
 syntax on
+set background=dark
+colorscheme solarized
 
-set autoread
-" not sure about this one 
+" cursor position in status line
 set ruler
+" syntax based folding
 set foldmethod=syntax
-
-" visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
 
 " move around windows with ctrl+movement keys
 map <C-j> <C-W>j
@@ -167,17 +125,18 @@ set viminfo^=%
 set laststatus=2
 
 "
-nmap <Leader>t :tabnew
+nmap <Leader>t :tabnew<Space>
 
 " hexmode shortcuts
 nnoremap <Leader>h :Hexmode<CR>
 inoremap <Leader>h <Esc>:Hexmode<CR>
 vnoremap <Leader>h :<C-U>Hexmode<CR>
 
-colorscheme fisa
 nnoremap <silent> <A-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-L> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
+
+"""""FUNCTIONS""""
 if exists("+showtabline")
      function MyTabLine()
          let s = ''
@@ -207,7 +166,6 @@ if exists("+showtabline")
      set stal=2
      set tabline=%!MyTabLine()
 endif
-"""""FUNCTIONS""""
 
 " function to auto-insert include guards in C/C++ headers
 function! s:insert_gates()
@@ -217,6 +175,7 @@ function! s:insert_gates()
   execute "normal! Go#endif /* " . gatename . " */"
   normal! kk
 endfunction
+
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 function! VisualSelection(direction) range
@@ -238,14 +197,6 @@ function! VisualSelection(direction) range
 
     let @/ = l:pattern
     let @" = l:saved_reg
-endfunction
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
 endfunction
 
 " ex command for toggling hex mode - define mapping if desired
@@ -289,3 +240,16 @@ function ToggleHex()
   let &modifiable=l:oldmodifiable
 endfunction
 
+func! WordProcessorMode() 
+  setlocal formatoptions=1 
+  setlocal noexpandtab 
+  map j gj 
+  map k gk
+  setlocal spell spelllang=en_us 
+  set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+  set complete+=s
+  set formatprg=par
+  setlocal wrap 
+  setlocal linebreak 
+endfu 
+" com! WP call WordProcessorMode()

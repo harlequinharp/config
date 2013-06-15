@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=xmonad
-Comment=xmonad all by itself!
-Exec=/usr/bin/launch_xmonad.sh
-Type=Application
+Name=Xmonad
+Comment=XMonad by itself
+Exec=xmonad
+Type=XSession
