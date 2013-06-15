@@ -16,5 +16,5 @@ Config {
     ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> { Signal %wlp2s0wi%, %dynnetwork% | mem: %memory% | %multicpu% | %coretemp%"
+    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> { %dynnetwork% | mem: %memory% | %multicpu% | %coretemp%"
 }
