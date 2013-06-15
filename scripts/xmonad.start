@@ -13,5 +13,9 @@ unclutter &
 #caps lock switches between qwerty and dvorak
 setxkbmap -layout "us, dvorak" -option "grp:caps_toggle"
 
+#laptop only -- run the synergy client
+synergyc allie-arch
+
+
 # start xmonad
 exec dbus-launch xmonad
