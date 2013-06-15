@@ -20,9 +20,10 @@ numPadKeys = [ xK_KP_End,   xK_KP_Down,     xK_KP_Page_Down -- 1, 2, 3
              , xK_KP_Home,  xK_KP_Up,       xK_KP_Page_Up   -- 7, 8, 9
              , xK_KP_Insert ] -- 0
 
-myKeys = [((modm .|. shiftMask, xK_z), spawn "xscreensaver-command -lock") -- mod+shift+z = lock
-        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s") -- ctrl+printscrn = screenshot area
+myKeys = [
+         ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s") -- ctrl+printscrn = screenshot area
         , ((0, xK_Print), spawn "scrot") -- printscrn = screenshot
+        , ((modm .|. shiftMask, xK_r), spawn "/home/allie/config/scripts/trackpad_toggle.sh")
         ]
         ++
         [((m .|. modm, k), windows $ f i) -- this block sets up numpad workspace switching but idgi
@@ -41,5 +42,6 @@ main = do
                         }
         , terminal = "xfce4-terminal"
         , modMask = modm -- rebind mod to whatever modm is
+        , focusFollowsMouse = False
         } `additionalKeys` myKeys
     
