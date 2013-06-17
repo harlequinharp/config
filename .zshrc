@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=/usr/share/oh-my-zsh
+ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -15,6 +15,10 @@ plugins=(git python django archlinux colorize pip vi-mode virtualenv virtualenvw
 
 source $ZSH/oh-my-zsh.sh
 
+bindkey "^?" backward-delete-char
+bindkey "^W" backward-kill-word 
+bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
+bindkey "^U" kill-line            
 export SCONSFLAGS="-j 5"
 
 alias lh="ls -lah "

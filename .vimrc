@@ -1,56 +1,82 @@
-" required for vundle
+"this is vim, not vi!
+set nocompatible 
+
+""""""""""""""""""
+" NeoBundle Stuff!
+""""""""""""""""""
+
+" required for NeoBundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+    set rtp+=~/.vim/bundle/neobundle.vim
+    set rtp+=~/config/powerline/powerline/bindings/vim
+endif
 
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" vundle itself
-Bundle 'gmarik/vundle'
-" Better file browser
-Bundle 'scrooloose/nerdtree'
-" Code commenter
-Bundle 'scrooloose/nerdcommenter'
-" Class/module browser
-Bundle 'majutsushi/tagbar'
-" Git integration
-Bundle 'motemen/git-vim'
-" Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
-" Surround
-Bundle 'tpope/vim-surround'
-" Indent text object
-Bundle 'michaeljsmith/vim-indent-object'
-" web api access (needed for Gist.vim)
-Bundle 'mattn/webapi-vim'
-" Search results counter
-Bundle 'IndexedSearch'
-" XML/HTML tags navigation
-Bundle 'matchit.zip'
-" interact with github gists from vim
-Bundle 'Gist.vim'
-let g:github_user = "abresee"
-let g:github_token = "88e7613893c665d61284df51f50478c7cb57941e"
+" NeoBundle itself
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Unite! united fuzzy ui plugin"
+NeoBundle 'Shougo/unite.vim'
 
 " code completion
-Bundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neocomplete'
+
 " snippets
-Bundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet'
+
+" git integration
+NeoBundle 'tpope/vim-fugitive'
+
+" Improved motion 
+NeoBundle 'Lokaltog/vim-easymotion'
+    let g:EasyMotion_leader_key = '<Leader>'
+
+" Better file browser
+NeoBundle 'scrooloose/nerdtree'
+
+" Code commenter
+NeoBundle 'scrooloose/nerdcommenter'
+
+" Class/module browser
+NeoBundle 'majutsushi/tagbar'
+
+" Pending tasks list
+NeoBundle 'fisadev/FixedTaskList.vim'
+
+" Surround
+NeoBundle 'tpope/vim-surround'
+
+" Indent text object
+NeoBundle 'michaeljsmith/vim-indent-object'
+
+" Search results counter
+NeoBundle 'IndexedSearch'
+
+" XML/HTML tags navigation
+NeoBundle 'matchit.zip'
+
+" interact with github gists from vim
+NeoBundle 'Gist.vim'
+    let g:github_user = "abresee"
+    let g:github_token = "88e7613893c665d61284df51f50478c7cb57941e"
+
+" web api access (needed for Gist.vim)
+NeoBundle 'mattn/webapi-vim'
+
 " solarized for vim
-Bundle 'altercation/vim-colors-solarized'
-" Powerline
-Bundle 'Lokaltog/vim-powerline'
-" solarized for powerline
-Bundle 'stephenmckinney/vim-solarized-powerline'
-set t_Co=16
-let g:solarized_termcolors=16
-let g:Powerline_theme='short'
-let g:Powerline_colorscheme='solarized16_dark'
+NeoBundle 'altercation/vim-colors-solarized'
+    set t_Co=16
+    let g:solarized_termcolors=16
 
+" required for NeoBundle tells vim to load filetype specific plugin and indent files
+filetype plugin indent on
 
-"
-" allow plugins by file type
-filetype plugin on
-filetype indent on
+"""""""""""""""""""""
+" end NeoBundle stuff
+"""""""""""""""""""""
+
 
 " tabs and spaces handling
 set expandtab
@@ -129,45 +155,7 @@ set laststatus=2
 "
 nmap <Leader>t :tabnew<Space>
 
-" hexmode shortcuts
-nnoremap <Leader>h :Hexmode<CR>
-inoremap <Leader>h <Esc>:Hexmode<CR>
-vnoremap <Leader>h :<C-U>Hexmode<CR>
 
-nnoremap <silent> <A-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-L> :execute 'silent! tabmove ' . tabpagenr()<CR>
-
-
-"""""FUNCTIONS""""
-if exists("+showtabline")
-     function MyTabLine()
-         let s = ''
-         let t = tabpagenr()
-         let i = 1
-         while i <= tabpagenr('$')
-             let buflist = tabpagebuflist(i)
-             let winnr = tabpagewinnr(i)
-             let s .= '%' . i . 'T'
-             let s .= (i == t ? '%1*' : '%2*')
-             let s .= ' '
-             let s .= i . ')'
-             let s .= ' %*'
-             let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-             let file = bufname(buflist[winnr - 1])
-             let file = fnamemodify(file, ':p:t')
-             if file == ''
-                 let file = '[No Name]'
-             endif
-             let s .= file
-             let i = i + 1
-         endwhile
-         let s .= '%T%#TabLineFill#%='
-         let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-         return s
-     endfunction
-     set stal=2
-     set tabline=%!MyTabLine()
-endif
 
 " function to auto-insert include guards in C/C++ headers
 function! s:insert_gates()
@@ -201,10 +189,7 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
-" ex command for toggling hex mode - define mapping if desired
-command -bar Hexmode call ToggleHex()
-
-" helper function to toggle hex mode
+" function to toggle hex mode
 function ToggleHex()
   " hex mode should be considered a read-only operation
   " save values for modified and read-only for restoration later,
@@ -242,16 +227,10 @@ function ToggleHex()
   let &modifiable=l:oldmodifiable
 endfunction
 
-func! WordProcessorMode() 
-  setlocal formatoptions=1 
-  setlocal noexpandtab 
-  map j gj 
-  map k gk
-  setlocal spell spelllang=en_us 
-  set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
-  set complete+=s
-  set formatprg=par
-  setlocal wrap 
-  setlocal linebreak 
-endfu 
-" com! WP call WordProcessorMode()
+" ex command for toggling hex mode 
+command -bar Hexmode call ToggleHex()
+
+" hexmode shortcuts
+nnoremap <Leader>h :Hexmode<CR>
+inoremap <Leader>h <Esc>:Hexmode<CR>
+vnoremap <Leader>h :<C-U>Hexmode<CR>
