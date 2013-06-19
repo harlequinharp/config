@@ -21,5 +21,8 @@ bindkey "^H" backward-delete-char      # Control-h also deletes the previous cha
 bindkey "^U" kill-line            
 export SCONSFLAGS="-j 5"
 
-alias lh="ls -lah "
+alias lh="ls -lh "
+alias ll="ls -l"
+alias la="ls -lah"
 eval `dircolors ~/.dircolors`
+
