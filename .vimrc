@@ -60,8 +60,7 @@ NeoBundle 'matchit.zip'
 " interact with github gists from vim
 NeoBundle 'Gist.vim'
     let g:github_user = "abresee"
-    let g:github_token = "88e7613893c665d61284df51f50478c7cb57941e"
-
+    so ~/config/.github_token
 " web api access (needed for Gist.vim)
 NeoBundle 'mattn/webapi-vim'
 
