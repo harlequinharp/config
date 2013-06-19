@@ -37,8 +37,22 @@ Config {
         ,Run Com "uname" [
             "-s","-r"] "" 36000
         ,Run StdinReader
+        ,Run Wireless "wlp2s0" ["-S","True","-t","<quality>"] 10
+        ,Run BatteryP ["BAT0"] [
+            "-t", "<left>%"
+            ,"-L", "10"
+            ,"-H", "80"
+            ,"-p", "3"
+            ,"--"
+            ,"-O","<fc=green>On</fc> -"
+            , "-i", ""
+            ,"-L", "-15"
+            ,"-H", "-5"
+            ,"-l", "red" 
+            ,"-m", "blue"
+            ,"-h", "green"] 600
     ]
     , sepChar = "%"
     , alignSep = "}{"
-    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> { %dynnetwork% | mem: %memory% | %multicpu% | %coretemp%"
+    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> {S: %wlp2s0wi%,  %dynnetwork% | mem: %memory% | %multicpu% | %coretemp% | %battery%"
 }
