@@ -12,6 +12,6 @@ unclutter &
 
 #caps lock switches between qwerty and dvorak
 setxkbmap -layout "us, dvorak" -option "grp:caps_toggle"
-
+redshift -l 42.3:-71.059 &
 # start xmonad
 exec dbus-launch xmonad
