@@ -11,7 +11,7 @@ feh --bg-fill ~/Dropbox/backgrounds/crow.jpg
 unclutter &
 
 #caps lock switches between qwerty and dvorak
-setxkbmap -layout "us, dvorak" -option "grp:caps_toggle"
+setxkbmap -layout "us, dvp" -option "grp:caps_toggle"
 
 ssh -f -N -L localhost:24800:allie-arch:24800 allie-arch
 #laptop only -- run the synergy client
