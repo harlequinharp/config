@@ -7,6 +7,9 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut true \
 # Set the background 
 feh --bg-fill ~/Dropbox/backgrounds/crow.jpg
 
+#pointer no longer an x
+xsetroot -cursor_name left_ptr
+
 #unclutter hides the cursor when it's not being used
 unclutter &
 
