@@ -5,7 +5,7 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut true \
  --expand true --width 5 --transparent true --alpha 0 --tint 0x333333 --height 17 &
  
 # Set the background 
-feh --bg-max ~/config/backgrounds/dvp.svg --magick-timeout 4 &
+feh --bg-max ~/config/backgrounds/dvp.svg --magick-timeout 30 &
 
 #pointer no longer an x
 xsetroot -cursor_name left_ptr

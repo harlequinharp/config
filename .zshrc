@@ -20,9 +20,10 @@ bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
 bindkey "^U" kill-line            
 export SCONSFLAGS="-j 5"
+export PATH=$PATH:/home/allie/.cabal/bin
 
 alias lh="ls -lh "
-alias ll="ls -l"
-alias la="ls -lah"
+alias ll="ls -l "
+alias la="ls -lah "
 eval `dircolors ~/.dircolors`
 

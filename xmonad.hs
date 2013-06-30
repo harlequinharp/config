@@ -1,7 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import System.IO
@@ -12,7 +12,7 @@ modm = mod1Mask -- so we can change it in one location
 
 myManageHook = composeAll
     [ className =? "Pidgin" --> doShift "2" -- All pidgin windows will spawn on workspace 2
-    , className =? "Icedove" --> doShift "3" -- icedove windows spawn on ws 3
+    , className =? "thunderbird" --> doShift "3" -- icedove windows spawn on ws 3
     ]
 
 numPadKeys = [ xK_KP_End,   xK_KP_Down,     xK_KP_Page_Down -- 1, 2, 3
@@ -24,7 +24,7 @@ myKeys = [
          ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s") -- ctrl+printscrn = screenshot area
         , ((0, xK_Print), spawn "scrot") -- printscrn = screenshot
         , ((modm .|. shiftMask, xK_r), spawn "/home/allie/config/scripts/trackpad_toggle.sh")
-        , ((modm .|. shiftMask, xK_w), spawn "iceweasel")
+        , ((modm .|. shiftMask, xK_w), spawn "firefox")
         , ((modm .|. shiftMask, xK_f), spawn "thunar")
         ]
         ++
