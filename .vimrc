@@ -76,6 +76,8 @@ filetype plugin indent on
 " end NeoBundle stuff
 """""""""""""""""""""
 
+" I like modelines! :)
+set modeline
 
 " tabs and spaces handling
 set expandtab
