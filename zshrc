@@ -1,3 +1,26 @@
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _match _correct _prefix
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' format 'comp.. %d'
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' max-errors 1
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' prompt '>>'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' substitute 1
+zstyle :compinstall filename '/home/allie/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=500000
+SAVEHIST=500000
+setopt appendhistory extendedglob nomatch notify
+# End of lines configured by zsh-newuser-install
 # Path to your oh-my-zsh configuration.
 ZSH=~/.oh-my-zsh
 
@@ -25,4 +48,3 @@ alias lh="ls -lh "
 alias ll="ls -l"
 alias la="ls -lah"
 eval `dircolors ~/.dircolors`
-
