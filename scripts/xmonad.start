@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+ trayer --edge top --align right --SetDockType true --SetPartialStrut true \
  --expand true --width 5 --transparent true --alpha 0 --tint 0x333333 --height 17 &
  
 # Set the background 
-feh --bg-max ~/config/backgrounds/dvp.svg --magick-timeout 30 &
+# feh --bg-max ~/config/backgrounds/dvp.svg --magick-timeout 30 &
 
-#pointer no longer an x
-xsetroot -cursor_name left_ptr
+# pointer no longer an x
+# xsetroot -cursor_name left_ptr
 
-#unclutter hides the cursor when it's not being used
-unclutter &
+# unclutter hides the cursor when it's not being used
+# unclutter &
 
 #caps lock switches between qwerty and dvorak
-setxkbmap -layout "us, dvp" -option "grp:caps_toggle"
+# setxkbmap -layout "us, dvp" -option "grp:caps_toggle"
 
-ssh -f -N -L localhost:24800:allie-arch:24800 allie-arch
+# ssh -f -N -L localhost:24800:allie-arch:24800 allie-arch
 #laptop only -- run the synergy client
 synergyc localhost
 
