@@ -1,20 +1,32 @@
 #!/bin/bash
+eval $("gpg-agent --daemon") &
 
-# Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
- --expand true --width 5 --transparent true --alpha 0 --tint 0x333333 --height 17 &
- 
-# Set the background 
-feh --bg-max ~/config/backgrounds/dvp.svg --magick-timeout 4 &
+# need to fix below by setting up public key auth
+ssh -f -N -L localhost:24800:allie-desk:24800 allie-desk
 
-#pointer no longer an x
-xsetroot -cursor_name left_ptr
+synergyc localhost
 
-#unclutter hides the cursor when it's not being used
+setxkbmap \
+    -layout "us, dvp" \
+    -option "grp:caps_toggle"
+
+trayer \
+    --edge top \
+    --align right \
+    --SetDockType true \
+    --SetPartialStrut true \
+    --expand true \
+    --width 5 \
+    --transparent true \
+    --alpha 0 \
+    --tint 0x333333 \
+    --height 17 &
+
+xsetroot \
+    -cursor_name left_ptr
+
 unclutter &
 
-#caps lock switches between qwerty and dvorak
-setxkbmap -layout "us, dvp" -option "grp:caps_toggle"
 redshift -l 42.3:-71.059 &
 # start xmonad
 exec dbus-launch xmonad

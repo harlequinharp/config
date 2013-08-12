@@ -1,0 +1,12 @@
+Description='A simple WPA encrypted wireless connection using a static IP'
+Interface=wlp2s0
+Connection=wireless
+Security=wpa
+ESSID=Two\ Fiveone
+Key=coltranelives
+IP=static
+Address='192.168.1.202/24'
+Gateway='192.168.1.1'
+DNS=('75.75.75.75')
+# Uncomment this if your ssid is hidden
+#Hidden=yes

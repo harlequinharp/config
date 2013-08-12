@@ -1,3 +1,9 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=500000
+SAVEHIST=500000
+setopt appendhistory extendedglob nomatch notify
+# End of lines configured by zsh-newuser-install
 # Path to your oh-my-zsh configuration.
 ZSH=~/.oh-my-zsh
 
@@ -19,10 +25,15 @@ bindkey "^?" backward-delete-char
 bindkey "^W" backward-kill-word 
 bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
 bindkey "^U" kill-line            
+
 export SCONSFLAGS="-j 5"
+
+export ANARCHY_PLATFORM=laptop
+export PROJECT_HOME=$HOME/projects
 
 alias lh="ls -lh "
 alias ll="ls -l"
 alias la="ls -lah"
 eval `dircolors ~/.dircolors`
+# . /usr/lib/python3.3/site-packages/Powerline-beta-py3.3.egg/powerline/bindings/zsh/powerline.zsh
 

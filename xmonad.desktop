@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Xmonad
-Comment=XMonad by itself
-Type=Application
-Exec=/usr/local/bin/xmonad.start

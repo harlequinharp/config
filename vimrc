@@ -9,7 +9,7 @@ set nocompatible
 filetype off
 if has('vim_starting')
     set rtp+=~/.vim/bundle/neobundle.vim
-    set rtp+=~/config/powerline/powerline/bindings/vim
+    set rtp+=~/.local/lib/python3.3/site-packages/powerline/bindings/vim
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
@@ -76,6 +76,8 @@ filetype plugin indent on
 " end NeoBundle stuff
 """""""""""""""""""""
 
+" I like modelines! :)
+set modeline
 
 " tabs and spaces handling
 set expandtab
