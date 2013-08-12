@@ -1,45 +1,52 @@
 -- vim: set syntax=haskell:
 Config { 
-    font = "xft:DejaVu Sans Mono:pixelsize=11:bold:antialias=true:hinting=true"
-    ,bgColor = "#333333"
-    ,fgColor = "grey"
-    ,position = TopW L 96
-    ,overrideRedirect = False
-    ,commands = [
+    font = "xft:DejaVu Sans Mono:pixelsize=11:bold:antialias=true:hinting=true",
+    bgColor = "#333333",
+    fgColor = "grey",
+    position = TopW L 96,
+    overrideRedirect = False,
+    commands = [
+        Run Com "uname" [
+            "-s","-r"
+        ] "" 36000,
+        Run StdinReader,
+        Run Date "%F, %A, %T" "date" 10,
+        Run Wireless "wlp2s0" [
+            "-S", "True",
+            "-t","<quality>"
+        ] 10,
+        Run DynNetwork  [
+            "-w","4",
+            "-t","<rx>, <tx>",
+            "-H","200",
+            "-L","10",
+            "-h","#FFB6B0",
+            "-l","#CEFFAC",
+            "-n","#FFFFCC"
+        ] 10,
+        Run Memory [
+            "-t", "<usedratio>%"
+        ] 10,
         Run MultiCpu [
-            "-t" ,"<total0> <total1> <total2> <total3>"
-            ,"-L" ,"30"
-            ,"-H" ,"60"
-            ,"-h" ,"#FFB6B0"
-            ,"-l" ,"#CEFFAC"
-            ,"-n" ,"#FFFFCC"
-            ,"-w","3"] 10
-        ,Run CoreTemp [
-            "-S", "True"
-            ,"-t","<core0>C"
-            ,"-L","35"
-            ,"-H","60"
-            ,"-l","lightblue"
-            ,"-n","gray90"
-            ,"-h","red"] 50
-        ,Run Memory [
-            "-t","<usedratio>%"] 10
-        ,Run DynNetwork  [
-            "-S", "True"
-            ,"-w","4"
-            ,"-t","<rx>s down, <tx>s up"
-            ,"-H","200"
-            ,"-L","10"
-            ,"-h","#FFB6B0"
-            ,"-l","#CEFFAC"
-            ,"-n","#FFFFCC"] 10
-        ,Run Date "%F, %A, %T" "date" 10
-        ,Run Com "uname" [
-            "-s","-r"] "" 36000
-        ,Run StdinReader
-        ,Run Wireless "wlp2s0" ["-S","True","-t","<quality>"] 10
-        ,Run BatteryP ["BAT0"] [
-            "-t", "<left>%"
+            "-t", "<total0> <total1> <total2> <total3>",
+            "-L", "30",
+            "-H", "60",
+            "-h", "#FFB6B0",
+            "-l", "#CEFFAC",
+            "-n", "#FFFFCC",
+            "-w", "3"
+        ] 10,
+        Run CoreTemp [
+            "-S", "True",
+            "-t", "<core0>C",
+            "-L", "35",
+            "-H", "60",
+            "-l", "lightblue",
+            "-n", "gray90",
+            "-h", "red"
+        ] 50,
+        Run BatteryP ["BAT1"] [
+            "-t", "<acstatus> <left>%"
             ,"-L", "10"
             ,"-H", "80"
             ,"-p", "3"
@@ -51,8 +58,8 @@ Config {
             ,"-l", "red" 
             ,"-m", "blue"
             ,"-h", "green"] 600
-    ]
-    , sepChar = "%"
-    , alignSep = "}{"
-    , template = "<fc=#B22222>%uname%</fc> | %StdinReader% } <fc=#ee9a00>%date%</fc> {S: %wlp2s0wi%,  %dynnetwork% | mem: %memory% | %multicpu% | %coretemp% | %battery%"
+    ],
+    sepChar = "%",
+    alignSep = "}{", 
+    template = "<fc=#BFF222>%uname%</fc> | %StdinReader%} <fc=#ee9a00>%date%</fc> {%wlp2s0wi%, %dynnetwork% | mem: %memory% | %multicpu% | %coretemp% | %battery%"
 }
