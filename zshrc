@@ -30,10 +30,9 @@ export SCONSFLAGS="-j 5"
 
 export ANARCHY_PLATFORM=laptop
 export PROJECT_HOME=$HOME/projects
+export PATH=~/.cabal/bin:$PATH
 
 alias lh="ls -lh "
 alias ll="ls -l"
 alias la="ls -lah"
 eval `dircolors ~/.dircolors`
-# . /usr/lib/python3.3/site-packages/Powerline-beta-py3.3.egg/powerline/bindings/zsh/powerline.zsh
-

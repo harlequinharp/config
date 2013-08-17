@@ -17,52 +17,12 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " NeoBundle itself
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Unite! united fuzzy ui plugin"
-NeoBundle 'Shougo/unite.vim'
-
-" code completion
-NeoBundle 'Shougo/neocomplete'
-
-" snippets
-NeoBundle 'Shougo/neosnippet'
-
-" git integration
-NeoBundle 'tpope/vim-fugitive'
-
 " Improved motion 
 NeoBundle 'Lokaltog/vim-easymotion'
-    let g:EasyMotion_leader_key = '<Leader>'
-
-" Better file browser
-NeoBundle 'scrooloose/nerdtree'
-
-" Code commenter
-NeoBundle 'scrooloose/nerdcommenter'
-
-" Class/module browser
-NeoBundle 'majutsushi/tagbar'
-
-" Pending tasks list
-NeoBundle 'fisadev/FixedTaskList.vim'
-
-" Surround
-NeoBundle 'tpope/vim-surround'
-
-" Indent text object
-NeoBundle 'michaeljsmith/vim-indent-object'
+    let g:EasyMotion_leader_key = ','
 
 " Search results counter
 NeoBundle 'IndexedSearch'
-
-" XML/HTML tags navigation
-NeoBundle 'matchit.zip'
-
-" interact with github gists from vim
-NeoBundle 'Gist.vim'
-    let g:github_user = "abresee"
-    so ~/config/.github_token
-" web api access (needed for Gist.vim)
-NeoBundle 'mattn/webapi-vim'
 
 " solarized for vim
 NeoBundle 'altercation/vim-colors-solarized'
@@ -94,24 +54,6 @@ set incsearch
 " line numbers
 set nu
 
-" show pending tasks list
-map <F2> :TaskList<CR>
-" NERDTree (better file browser) toggle
-map <F3> :NERDTreeToggle<CR>
-" toggle Tagbar display
-map <F4> :TagbarToggle<CR>
-
-
-
-
-" Ignore files on NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.os$', '\.so$', '\.o$']
-
-
-" tabman shortcuts
-let g:tabman_toggle = 'tl'
-let g:tabman_focus  = 'tf'
-
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
 
@@ -137,38 +79,12 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-"
+
 " visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\   exe "normal! g`\"" |
-	\ endif
-" Remember info about open buffers on close
-set viminfo^=%
-
-" Always show the status line
-set laststatus=2
-
-"
-nmap <Leader>t :tabnew<Space>
-
-
-
-" function to auto-insert include guards in C/C++ headers
-function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  execute "normal! i#ifndef " . gatename
-  execute "normal! o#define " . gatename . " "
-  execute "normal! Go#endif /* " . gatename . " */"
-  normal! kk
-endfunction
-
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-
+" helper for above
 function! VisualSelection(direction) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -189,6 +105,28 @@ function! VisualSelection(direction) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+" Return to last edit position when opening files 
+autocmd BufReadPost *
+	\ if line("'\"") > 0 && line("'\"") <= line("$") |
+	\   exe "normal! g`\"" |
+	\ endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+" Always show the status line
+set laststatus=2
+
+" function to auto-insert include guards in C/C++ headers
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef " . gatename
+  execute "normal! o#define " . gatename . " "
+  execute "normal! Go#endif /* " . gatename . " */"
+  normal! kk
+endfunction
+
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
 " function to toggle hex mode
 function ToggleHex()
