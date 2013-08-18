@@ -2,18 +2,17 @@
 Config { 
     font = "xft:DejaVu Sans Mono:pixelsize=11:bold:antialias=true:hinting=true",
     bgColor = "#333333",
-    fgColor = "grey",
-    position = TopW L 96,
+    fgColor = "#999999",
     overrideRedirect = False,
     commands = [
         Run Com "uname" [
             "-s","-r"
         ] "" 36000,
         Run StdinReader,
-        Run Date "%F, %A, %T" "date" 10,
+        Run Date "<fc=#aa9a00>%a %b %_d %Y</fc><fc=#00a9aa> %H:%M:%S</fc>" "date" 10,
         Run Wireless "wlp2s0" [
             "-S", "True",
-            "-t","<quality>"
+            "-t", "<essid>: <quality>"
         ] 10,
         Run DynNetwork  [
             "-w","4",
@@ -24,9 +23,7 @@ Config {
             "-l","#CEFFAC",
             "-n","#FFFFCC"
         ] 10,
-        Run Memory [
-            "-t", "<usedratio>%"
-        ] 10,
+        Run Memory [] 10,
         Run MultiCpu [
             "-t", "<total0> <total1> <total2> <total3>",
             "-L", "30",
@@ -59,7 +56,5 @@ Config {
             ,"-m", "blue"
             ,"-h", "green"] 600
     ],
-    sepChar = "%",
-    alignSep = "}{", 
-    template = "<fc=#BFF222>%uname%</fc> | %StdinReader%} <fc=#ee9a00>%date%</fc> {%wlp2s0wi%, %dynnetwork% | mem: %memory% | %multicpu% | %coretemp% | %battery%"
+    template = "%StdinReader%}%date%{%wlp2s0wi% %dynnetwork% %memory% %multicpu% %coretemp% %battery% %uname%"
 }
