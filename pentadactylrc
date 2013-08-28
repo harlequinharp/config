@@ -1,6 +1,0 @@
-" disable automatic autocompletion (can still manually autocomplete via tab key)
-set autocomplete=''
-colorscheme solarized-dark
-" which kinds of tabs should open with focus?
-set activate=addons,bookmarks,diverted,extoptions,help,homepage,quickmark
-
