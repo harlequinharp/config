@@ -287,6 +287,7 @@ add_binds("normal", {
         function (w)
             local uri = string.gsub(w.view.uri or "", " ", "%%20")
             luakit.selection.primary = uri
+            luakit.selection.clipboard = uri
             w:notify("Yanked uri: " .. uri)
         end),
 
@@ -414,14 +415,16 @@ add_binds("normal", {
     buf("^D$",  "Quit and don't save the session.",
         function (w) w:close_win() end),
 
-    -- Download and play vid
+    -- Download vid
 
     key({}, "v", function(w)
         local view = w.view
         local uri = view.hovered_uri or view.uri
         if uri then
-            luakit.spawn(
-                string.format("
+            cmd = "cclive -s best --filename-format '%%t.%%s' --output-dir %q %q"
+            luakit.spawn(string.format(cmd, os.getenv("HOME") .. "/vidsave", uri)) 
+        end 
+    end),
 
     -- Enter passthrough mode
     key({"Control"}, "z",

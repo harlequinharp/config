@@ -1,4 +1,5 @@
 # Lines configured by zsh-newuser-install
+# ~/.zshrc
 HISTFILE=~/.histfile
 HISTSIZE=500000
 SAVEHIST=500000

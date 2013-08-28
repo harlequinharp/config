@@ -1,4 +1,5 @@
 -- vim: set syntax=haskell:
+-- ~/.xmobarrc 
 Config { 
     font = "xft:DejaVu Sans Mono:pixelsize=11:bold:antialias=true:hinting=true",
     bgColor = "#333333",
