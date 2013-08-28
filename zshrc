@@ -30,7 +30,7 @@ export SCONSFLAGS="-j 5"
 
 export ANARCHY_PLATFORM=laptop
 export PROJECT_HOME=$HOME/projects
-export PATH=~/.cabal/bin:$PATH
+export PATH=~/jslib/bin:~/.gem/ruby/2.0.0/bin:~/.cabal/bin:$PATH
 
 alias lh="ls -lh "
 alias ll="ls -l"

@@ -2,16 +2,17 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.LayoutHints
 import System.IO
 
-main = do 
+main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad $ defaultConfig { 
+    xmonad $ defaultConfig {
         manageHook = manageDocks,
-        layoutHook = avoidStruts $ layoutHook defaultConfig,
-        logHook = dynamicLogWithPP xmobarPP { 
+        layoutHook = layoutHints $ avoidStruts $ layoutHook defaultConfig,
+        logHook = dynamicLogWithPP xmobarPP {
             ppOutput = hPutStrLn xmproc,
-            ppTitle = xmobarColor "brown" "" 
+            ppTitle = xmobarColor "brown" ""
         },
         terminal = "xfce4-terminal" ,
         focusFollowsMouse = False

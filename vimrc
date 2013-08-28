@@ -19,7 +19,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Improved motion 
 NeoBundle 'Lokaltog/vim-easymotion'
-    let g:EasyMotion_leader_key = ','
+    let g:EasyMotion_leader_key = '<Leader><Leader>'
 
 " Search results counter
 NeoBundle 'IndexedSearch'
@@ -28,8 +28,14 @@ NeoBundle 'IndexedSearch'
 NeoBundle 'altercation/vim-colors-solarized'
     set t_Co=16
     let g:solarized_termcolors=16
+    if has('gui_running')
+        set guifont=DejaVu\ Sans\ Mono\ 9
+    endif
 
-" required for NeoBundle tells vim to load filetype specific plugin and indent files
+NeoBundle 'kchmck/vim-coffee-script'
+
+" undoing above required for NeoBundle, tells vim to load 
+" filetype specific plugin and indent files
 filetype plugin indent on
 
 """""""""""""""""""""
@@ -40,10 +46,8 @@ filetype plugin indent on
 set modeline
 
 " tabs and spaces handling
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set et ts=4 sts=4 sw=4
+autocmd FileType html setlocal ts=2 sts=2 sw=2
 
 " always show status bar
 set ls=2
@@ -54,12 +58,14 @@ set incsearch
 " line numbers
 set nu
 
-" when scrolling, keep cursor 3 lines away from screen border
-set scrolloff=3
-
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
 set wildmode=list:longest
+
+set clipboard="unnamedplus,exclude:cons\|linux"
+
+set ve=block
+set go="aceimtT"
 
 " to use fancy symbols for powerline, uncomment the following line and use a
 " patched font (more info on the README.rst)
@@ -71,8 +77,9 @@ colorscheme solarized
 
 " cursor position in status line
 set ruler
-" syntax based folding
-set foldmethod=syntax
+" folding
+set foldmethod=indent
+autocmd FileType c cpp setlocal foldmethod=syntax
 
 " move around windows with ctrl+movement keys
 map <C-j> <C-W>j
@@ -127,49 +134,3 @@ function! s:insert_gates()
 endfunction
 
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-
-" function to toggle hex mode
-function ToggleHex()
-  " hex mode should be considered a read-only operation
-  " save values for modified and read-only for restoration later,
-  " and clear the read-only flag for now
-  let l:modified=&mod
-  let l:oldreadonly=&readonly
-  let &readonly=0
-  let l:oldmodifiable=&modifiable
-  let &modifiable=1
-  if !exists("b:editHex") || !b:editHex
-    " save old options
-    let b:oldft=&ft
-    let b:oldbin=&bin
-    " set new options
-    setlocal binary " make sure it overrides any textwidth, etc.
-    let &ft="xxd"
-    " set status
-    let b:editHex=1
-    " switch to hex editor
-    %!xxd
-  else
-    " restore old options
-    let &ft=b:oldft
-    if !b:oldbin
-      setlocal nobinary
-    endif
-    " set status
-    let b:editHex=0
-    " return to normal editing
-    %!xxd -r
-  endif
-  " restore values for modified and read only state
-  let &mod=l:modified
-  let &readonly=l:oldreadonly
-  let &modifiable=l:oldmodifiable
-endfunction
-
-" ex command for toggling hex mode 
-command -bar Hexmode call ToggleHex()
-
-" hexmode shortcuts
-nnoremap <Leader>h :Hexmode<CR>
-inoremap <Leader>h <Esc>:Hexmode<CR>
-vnoremap <Leader>h :<C-U>Hexmode<CR>
