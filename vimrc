@@ -79,7 +79,6 @@ colorscheme solarized
 set ruler
 " folding
 set foldmethod=indent
-autocmd FileType c cpp setlocal foldmethod=syntax
 
 " move around windows with ctrl+movement keys
 map <C-j> <C-W>j
