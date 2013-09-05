@@ -6,7 +6,7 @@ import XMonad.Layout.LayoutHints
 import System.IO
 
 main = do
-    xmproc <- spawnPipe "xmobar"
+    xmproc <- spawnPipe "/home/allie/.cabal/bin/xmobar"
     xmonad $ defaultConfig {
         manageHook = manageDocks,
         layoutHook = layoutHints $ avoidStruts $ layoutHook defaultConfig,
