@@ -7,7 +7,6 @@ setxkbmap \
 
 xsetroot \
     -cursor_name left_ptr
-/home/allie/config/scripts/synergy_ssh.sh
 unclutter &
 redshift -l 42.3:-71.059 &
 dbus-launch --exit-with-session xmonad
