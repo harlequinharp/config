@@ -23,8 +23,25 @@ NeoBundle 'Shougo/unite.vim'
 " code completion
 NeoBundle 'Shougo/neocomplete'
 
+let g:neocomplete#enable_at_startup = 1
+
 " snippets
 NeoBundle 'Shougo/neosnippet'
+
+imap <C-k>      <Plug>(neosnippet_expand_or_jump)
+smap <C-k>      <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>      <Plug>(neosnippet_expand_target)
+
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
 
 " git integration
 NeoBundle 'tpope/vim-fugitive'
