@@ -17,6 +17,8 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " NeoBundle itself
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'majutsushi/tagbar'
+
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -25,8 +27,6 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-
-NeoBundle 'Shougo/vimshell.vim'
 
 " Unite! united fuzzy ui plugin"
 NeoBundle 'Shougo/unite.vim'
@@ -49,7 +49,6 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist'
         \ }
 
 " Define keyword.
@@ -162,7 +161,7 @@ set go="aceimtT"
 " patched font (more info on the README.rst)
 let g:Powerline_symbols = 'fancy'
 
-syntax on
+syntax enable
 set background=dark
 colorscheme solarized
 
@@ -224,3 +223,19 @@ function! s:insert_gates()
 endfunction
 
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+        \ 'ctagsbin' : 'coffeetags',
+        \ 'ctagsargs' : '--include-vars',
+        \ 'kinds' : [
+        \ 'f:functions',
+        \ 'o:object',
+        \ ],
+        \ 'sro' : ".",
+        \ 'kind2scope' : {
+        \ 'f' : 'object',
+        \ 'o' : 'object',
+        \ }
+        \ }
+endif
