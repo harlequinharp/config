@@ -7,6 +7,7 @@ setxkbmap \
 
 xsetroot \
     -cursor_name left_ptr
+
 unclutter &
 redshift -l 42.3:-71.059 &
 dbus-launch --exit-with-session /home/allie/.cabal/bin/xmonad
