@@ -36,7 +36,6 @@ NeoBundle 'Shougo/neocomplete'
 
 " snippets
 NeoBundle 'Shougo/neosnippet'
-
     let g:acp_enableAtStartup = 0
     " Use neocomplete.
     let g:neocomplete#enable_at_startup = 1
@@ -57,26 +56,6 @@ NeoBundle 'Shougo/neosnippet'
     endif
     let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-    " Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-      return neocomplete#smart_close_popup() . "\<CR>"
-      " For no inserting <CR> key.
-      "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-    endfunction
-    " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplete#close_popup()
-    inoremap <expr><C-e>  neocomplete#cancel_popup()
-
     " Enable omni completion.
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -93,16 +72,7 @@ NeoBundle 'Shougo/neosnippet'
     smap <C-k>      <Plug>(neosnippet_expand_or_jump)
     xmap <C-k>      <Plug>(neosnippet_expand_target)
 
-    imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: pumvisible() ? "\<C-n>" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: "\<TAB>"
-
-    if has('conceal')
-        set conceallevel=2 concealcursor=i
-    endif
+NeoBundle 'Shougo/vimfiler.vim'
 
 " git integration
 NeoBundle 'tpope/vim-fugitive'
@@ -113,14 +83,6 @@ NeoBundle 'Lokaltog/vim-easymotion'
 
 " Search results counter
 NeoBundle 'IndexedSearch'
-
-" solarized for vim
-NeoBundle 'altercation/vim-colors-solarized'
-    set t_Co=16
-    let g:solarized_termcolors=16
-    if has('gui_running')
-        set guifont=DejaVu\ Sans\ Mono\ 9
-    endif
 
 NeoBundle 'kchmck/vim-coffee-script'
 
@@ -159,11 +121,9 @@ set go="aceimtT"
 
 " to use fancy symbols for powerline, uncomment the following line and use a
 " patched font (more info on the README.rst)
-let g:Powerline_symbols = 'fancy'
 
 syntax enable
 set background=dark
-colorscheme solarized
 
 " cursor position in status line
 set ruler
@@ -175,6 +135,11 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+ 
+" save file keybinds
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
 
 " Return to last edit position when opening files 
 autocmd BufReadPost *

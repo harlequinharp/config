@@ -109,6 +109,7 @@ require "bookmarks_chrome"
 -- Add download support
 require "downloads"
 require "downloads_chrome"
+
 downloads.default_dir = os.getenv("HOME") .. "/downloads"
 downloads.add_signal("download-location", function (uri,file)
     if not file or file == "" then

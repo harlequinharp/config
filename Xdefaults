@@ -1,0 +1,17 @@
+URxvt.transparent: true
+URxvt.tintColor: Blue
+
+URxvt.foreground: White
+URxvt.background: Black
+
+URxvt.scrollBar: false        
+URxvt.secondaryScroll: true
+
+URxvt.saveLines: 10000 
+
+URxvt.font: xft:Liberation Mono:pixelsize=12:hinting=true:antialias=true
+URxvt.italicFont: xft:Liberation Mono:italic:pixelsize=12:hinting=true:antialias=true
+URxvt.boldItalicFont: xft:Deja Vu Sans Mono:bold:italic:pixelsize=10:hinting=true:antialias=true
+
+URxvt.color4: RoyalBlue
+URxvt.color12: RoyalBlue
