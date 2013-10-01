@@ -1,0 +1,1 @@
+cabal install -f 'with_xft with_utf8 with_alsa with_datezone with_mpris with_dbus with_threaded' xmobar
