@@ -119,12 +119,7 @@ set clipboard="unnamedplus,exclude:cons\|linux"
 set ve=block
 set go="aceimtT"
 
-" to use fancy symbols for powerline, uncomment the following line and use a
-" patched font (more info on the README.rst)
-
 syntax enable
-set background=dark
-colorscheme evening
 
 " cursor position in status line
 set ruler
