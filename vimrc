@@ -124,6 +124,7 @@ set go="aceimtT"
 
 syntax enable
 set background=dark
+colorscheme evening
 
 " cursor position in status line
 set ruler
@@ -179,3 +180,9 @@ if executable('coffeetags')
         \ }
         \ }
 endif
+
+autocmd BufRead *.vala,*.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
+
+let vala_comment_strings = 1
+let vala_space_errors = 1
