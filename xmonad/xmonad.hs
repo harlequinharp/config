@@ -41,7 +41,7 @@ modm = mod4Mask
 myXmonadBar = "dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '0' -y '0' -h '14' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
 myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '960' -y '0' -w '960' -h '14' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
-myLayoutHook = layoutHints $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
+myLayoutHook = smartBorders $ layoutHints $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
     where
         tiled = ResizableTall 1 (2/100) (1/2) []
 
@@ -85,21 +85,21 @@ xftFont  = "xft: inconsolata-14"
 barXFont = "inconsolata:size=12"
 
 mXPConfig :: XPConfig
-mXPConfig =
-    defaultXPConfig {
-        font    = xftFont,
-        bgColor = colorDarkGray,
-        bgHLight = colorGreen,
-        fgHLight = colorGreen,
-        promptBorderWidth = 0,
-        height = 14,
-        historyFilter = deleteConsecutive
-    }
+mXPConfig = defaultXPConfig {
+    font = barXFont,
+    bgColor = colorDarkGray,
+    bgHLight = colorGreen,
+    fgHLight = colorGreen,
+    promptBorderWidth = 0,
+    height = 14,
+    historyFilter = deleteConsecutive
+}
 
 largeXPConfig :: XPConfig
 largeXPConfig = mXPConfig {
-    height = 22
-    }
+    font    = xftFont,
+    height  = 22
+}
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask,                  xK_p        ), runOrRaisePrompt largeXPConfig),
