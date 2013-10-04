@@ -1,5 +1,5 @@
 "this is vim, not vi!
-set nocompatible 
+set nocompatible
 
 """"""""""""""""""
 " NeoBundle Stuff!
@@ -32,7 +32,7 @@ NeoBundle 'Shougo/vimfiler.vim'
 " git integration
 NeoBundle 'tpope/vim-fugitive'
 
-" Improved motion 
+" Improved motion
 NeoBundle 'Lokaltog/vim-easymotion'
     let g:EasyMotion_leader_key = '<Leader><Leader>'
 
@@ -41,7 +41,7 @@ NeoBundle 'IndexedSearch'
 
 NeoBundle 'kchmck/vim-coffee-script'
 
-" undoing above required for NeoBundle, tells vim to load 
+" undoing above required for NeoBundle, tells vim to load
 " filetype specific plugin and indent files
 filetype plugin indent on
 
@@ -51,6 +51,7 @@ filetype plugin indent on
 
 " I like modelines! :)
 set modeline
+
 
 " tabs and spaces handling
 set et ts=4 sts=4 sw=4
@@ -86,17 +87,17 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
- 
+
 " save file keybinds
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
-" Return to last edit position when opening files 
+" Return to last edit position when opening files
 autocmd BufReadPost *
-	\ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\   exe "normal! g`\"" |
-	\ endif
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 
 " Remember info about open buffers on close
 set viminfo^=%
