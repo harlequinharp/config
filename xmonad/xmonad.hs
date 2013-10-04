@@ -38,8 +38,8 @@ import qualified Data.Map as M
 
 myTerminal = "urxvt -e fish"
 modm = mod4Mask
-myXmonadBar = "dzen2 -x '0' -y '0' -h '24' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
-myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
+myXmonadBar = "dzen2 -fn 'xft:Liberation Mono:pixelsize=12:hinting=true:antialias=true' -x '0' -y '0' -h '24' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
+myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'xft:Liberation Mono:pixelsize=12:hinting=true:antialias=true' -x '960' -y '0' -w '960' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
 myLayoutHook = layoutHints $ avoidStruts $ tiled ||| Mirror tiled ||| Full ||| simpleFloat
     where
