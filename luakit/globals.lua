@@ -1,6 +1,6 @@
 -- Global variables for luakit
 globals = {
-    homepage            = "http://postzine.org/",
+    homepage            = "http://github.com/abresee/",
     scroll_step         = 40,
     zoom_step           = 0.1,
     max_cmd_history     = 100,
