@@ -109,6 +109,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask .|. shiftMask,    xK_l        ), spawn "slock"),
     ((0,                        xK_Print    ), spawn "scrot -e 'mv $f ~/screenshots/'"),
     ((modMask,                  xK_o        ), spawn "luakit"),
+    ((modMask,                  xK_f        ), spawn "pcmanfm"),
     ((modMask,                  xK_space    ), sendMessage NextLayout),
     ((modMask .|. shiftMask,    xK_space    ), setLayout $ XMonad.layoutHook conf),
     ((modMask,                  xK_b        ), sendMessage ToggleStruts),

@@ -149,8 +149,8 @@ VirtualHost "localhost"
 
 VirtualHost "postzine.org"
     ssl = {
-        key = "/home/www/certs/postzine.key";
-        certificate = "/home/www/certs/postzine.crt";
+        key = "/home/www/certs/postzine_xmppd.key";
+        certificate = "/home/www/certs/postzine_xmpp.pem";
     }
 
 ------ Components ------

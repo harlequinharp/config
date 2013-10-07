@@ -70,8 +70,7 @@ end
 
 function load()
     load_ua_strings()
-    -- switch_to(ua_alias_default)
-    switch_to("safari")
+    switch_to(ua_alias_default)
 end
 
 -- Add commands.
