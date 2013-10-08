@@ -150,6 +150,6 @@ main = do
         logHook = myLogHook dzenLeftBar >> fadeInactiveLogHook 0xdddddddd,
         normalBorderColor = colorNormalBorder,
         focusedBorderColor = colorFocusedBorder,
-        focusFollowsMouse = False
+        focusFollowsMouse = True
     }
 

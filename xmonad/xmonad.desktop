@@ -2,4 +2,4 @@
 Name=Xmonad
 Comment=XMonad by itself
 Type=Application
-Exec=/home/allie/config/scripts/xmonad.start
+Exec=/home/allie/.cabal/bin/xmonad
