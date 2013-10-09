@@ -112,7 +112,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask,                  xK_f        ), spawn "pcmanfm"),
     ((modMask,                  xK_space    ), sendMessage NextLayout),
     ((modMask .|. shiftMask,    xK_space    ), setLayout $ XMonad.layoutHook conf),
-    ((modMask,                  xK_b        ), sendMessage ToggleStruts),
+    ((modMask .|. shiftMask,    xK_b        ), sendMessage ToggleStruts),
     ((modMask,                  xK_n        ), refresh),
     ((modMask,                  xK_Tab      ), windows W.focusDown),
     ((modMask,                  xK_j        ), windows W.focusDown),
@@ -150,6 +150,6 @@ main = do
         logHook = myLogHook dzenLeftBar >> fadeInactiveLogHook 0xdddddddd,
         normalBorderColor = colorNormalBorder,
         focusedBorderColor = colorFocusedBorder,
-        focusFollowsMouse = False
+        focusFollowsMouse = True
     }
 

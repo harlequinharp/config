@@ -90,7 +90,7 @@ allow_registration = false
 -- Force clients to use encrypted connections? This option will
 -- prevent clients from authenticating unless they are using encryption.
 
-c2s_require_encryption = false
+c2s_require_encryption = true
 
 -- Force certificate authentication for server-to-server connections?
 -- This provides ideal security, but requires servers you communicate
@@ -150,7 +150,7 @@ VirtualHost "localhost"
 VirtualHost "postzine.org"
     ssl = {
         key = "/home/www/certs/postzine_xmppd.key";
-        certificate = "/home/www/certs/postzine_xmpp.pem";
+        certificate = "/home/www/certs/postzine_xmpp_cat.pem";
     }
 
 ------ Components ------
